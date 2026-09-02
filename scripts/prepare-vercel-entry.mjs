@@ -1,11 +1,12 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 
-const hex = readFileSync(
-  "artifacts/govstart-setu-dashboard/dashboard-entry.hex",
-  "utf8",
-).replace(/\s/g, "");
-
-writeFileSync(
-  "artifacts/govstart-setu-dashboard/index.html",
-  Buffer.from(hex, "hex"),
+const appDirectory = existsSync(join(process.cwd(), "dashboard-entry.hex"))
+  ? process.cwd()
+  : join(process.cwd(), "artifacts/govstart-setu-dashboard");
+const hex = readFileSync(join(appDirectory, "dashboard-entry.hex"), "utf8").replace(
+  /\s/g,
+  "",
 );
+
+writeFileSync(join(appDirectory, "index.html"), Buffer.from(hex, "hex"));
