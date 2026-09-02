@@ -1,7 +1,7 @@
 {
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "node -e \"const fs=require('fs');const h=fs.readFileSync('artifacts/govstart-setu-dashboard/dashboard-entry.hex','utf8').replace(/\\\\s/g,'');fs.writeFileSync('artifacts/govstart-setu-dashboard/index.html',Buffer.from(h,'hex'));\" && pnpm --filter @workspace/govstart-setu-dashboard run build",
+  "buildCommand": "node scripts/prepare-vercel-entry.mjs && pnpm --filter @workspace/govstart-setu-dashboard run build",
   "outputDirectory": "artifacts/govstart-setu-dashboard/dist/public",
   "rewrites": [
     {
