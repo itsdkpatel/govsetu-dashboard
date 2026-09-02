@@ -1,7 +1,7 @@
 {
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm --filter @workspace/govstart-setu-dashboard run build",
+  "buildCommand": "cp artifacts/govstart-setu-dashboard/dashboard.html artifacts/govstart-setu-dashboard/index.html && pnpm --filter @workspace/govstart-setu-dashboard run build",
   "outputDirectory": "artifacts/govstart-setu-dashboard/dist/public",
   "rewrites": [
     {
