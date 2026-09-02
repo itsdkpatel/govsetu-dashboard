@@ -1,7 +1,7 @@
 {
   "framework": "vite",
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "base64 -d artifacts/govstart-setu-dashboard/dashboard-entry.b64 > artifacts/govstart-setu-dashboard/index.html && pnpm --filter @workspace/govstart-setu-dashboard run build",
+  "buildCommand": "node -e \"const fs=require('fs');const h=fs.readFileSync('artifacts/govstart-setu-dashboard/dashboard-entry.hex','utf8').replace(/\\\\s/g,'');fs.writeFileSync('artifacts/govstart-setu-dashboard/index.html',Buffer.from(h,'hex'));\" && pnpm --filter @workspace/govstart-setu-dashboard run build",
   "outputDirectory": "artifacts/govstart-setu-dashboard/dist/public",
   "rewrites": [
     {
